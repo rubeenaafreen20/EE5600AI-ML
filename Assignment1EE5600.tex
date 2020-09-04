@@ -144,7 +144,7 @@ https://github.com/rubeenaafreen20/EE5600AI-ML
 \section{Problem}
 
 Without using distance formula, show that points
-\myvec{-2\\-1},\myvec{4\\0}, \myvec{3,3} and \myvec{-3\\2} are the vertices of a parallelogram.
+\myvec{-2\\-1}, \myvec{4\\0}, \myvec{3,3} and \myvec{-3\\2} are the vertices of a parallelogram.
 
 \section{Explanation}
 Let points of quadrilateral be A, B, C, D such that,
@@ -155,27 +155,27 @@ Let points of quadrilateral be A, B, C, D such that,
 We have vector equations for each side as:
 \\
 \begin{align}
-    \bm AB=A-B=\myvec{-2\\-1}-\myvec{4\\0}=\myvec{-6\\-1}
+    \Vec{A-B}=\myvec{-2\\-1}-\myvec{4\\0}=\myvec{-6\\-1}
 \end{align}
 \begin{align}
-   \bm BC=B-C=\myvec{4\\0}-\myvec{3\\3}=\myvec{1\\-3}
+   \Vec{B-C}=\myvec{4\\0}-\myvec{3\\3}=\myvec{1\\-3}
 \end{align}
 \begin{align}
-   \bm DC=D-C=D=\myvec{-3\\2}-\myvec{3\\3}=\myvec{-6\\-1}
+   \Vec{D-C}=\myvec{-3\\2}-\myvec{3\\3}=\myvec{-6\\-1}
 \end{align}
 and
 \begin{align}
-   \bm AD=A-D=A=\myvec{-2\\-1}-\myvec{-3\\2}=\myvec{1\\-3}
+   \Vec{A-D}=\myvec{-2\\-1}-\myvec{-3\\2}=\myvec{1\\-3}
 \end{align}
 
 \section{Proof}
 Since,
 \begin{align}
-   \bm AB=\bm DC
+   \Vec{A-B}=\Vec{B-C}
 \end{align}
 and,
 \begin{align}
-   \bm BC=\bm AD
+   \Vec{B-C}=\Vec{A-D}
 \end{align}
 We can say that opposite edges of the quadrilateral are parallel.
 \\
@@ -184,13 +184,9 @@ Hence, ABCD is a parallelogram
 \section{Result}
 Plot of quadrilateral obtained from Python code is shown below.
 \\
-\\
 \begin{figure}[htp]
     \centering
     \includegraphics[width=9.5cm]{plotquad.png}
+    \caption{ Plot of parallelogram ABCD}
 \end{figure}
-Fig. 1: Plot of parallelogram ABCD
-
-
-
 \end{document}
