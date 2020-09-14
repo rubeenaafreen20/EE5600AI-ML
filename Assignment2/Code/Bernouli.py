@@ -10,7 +10,7 @@ def Rand(start, end, num):
         res.append(random.randint(start, end)) 
   
     return res 
-num=Rand(11111111,99999999,200)
+num=Rand(10000000,99999999,sample_size)
 print("random numbers are",num)
 
 index=random.randint(0,199)
