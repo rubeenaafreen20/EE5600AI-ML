@@ -40,18 +40,19 @@ unitDigits=LastDigitArray(number)
 print("Last digits of each of these numbers generated are:\n",unitDigits)
 
 freq=FindFreqTable(unitDigits,digit)
-print("frequency distribution table \n", freq)
+print("frequency distribution table: \n", freq)
 
+print ("frequency distribution table as given in the problem \n",Frequency)
 
 def checkValueFreq(index):          #accordingly check value of frequency of last digit
     frequen=freq[index]
     return frequen;
 
 #Chose a random last digit
-index=random.randint(0,len(digit))
-print("\n A random last digit chosen \n", index)
+index=random.randint(0,len(digit)-1)
+print("\n A random last digit chosen: ", index)
 
 freqOfDigit=checkValueFreq(index)
 
 probability=freqOfDigit/sample_size
-print("Probability of unit digit",index,"is:",probability)
+print("Probability of",index,"as unit digit is:",probability)
