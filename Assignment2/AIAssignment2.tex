@@ -66,8 +66,6 @@ breaklines=true,
 columns=fullflexible
 }
 \begin{document}
-
-
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{problem}{Problem}
 \newtheorem{proposition}{Proposition}[section]
@@ -142,39 +140,26 @@ https://github.com/rubeenaafreen20/EE5600AI-ML/tree/master/Assignment2
 \end{lstlisting}
 %
 \section{Problem}
-On one page of a telephone directory, there were 200 telephone numbers. The frequency distribution of their unit place digit (for example, in the number 25828573, the unit place digit is 3) is given in Table below
-\\
-\begin{center}
- \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
- \hline
- \textbf{Digit} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ 
- \hline
- \textbf{Frequency} & 22 & 26 & 22 & 22 & 20 & 10 & 14 & 28 & 16 & 20\\
- \hline
-\end{tabular}
-\captionof{table}{Frequency Distribution}\label{table}
-\end{center}
+On one page of a telephone directory, there were 200 telephone numbers. The frequency distribution of their unit place digit (for example, in the number 25828573, the unit place digit is 3) is given in Table below:
+\input{given_freq_dist}
 Without looking at the page, the pencil is placed on one of these numbers, i.e., the number is chosen at random. What is the probability that the digit in its unit place is 6?
 \section{Explanation}
 probability is defined as
 \begin{align}
     P=\frac{\text{number of outcomes}}{\text{Sample space}}
 \end{align}
-
 \section{Solution}
-Let X \in \left\{ i \right\}_{i=1}^{i=6} \text{and } f_i \text{ be the corresponding frequency. Then,}
-
+Let $X\in\{i\}\math{_{i=1}^{i=6}}$ and ${f_i}$ be the corresponding frequency. Then,
 \begin{align}
     P_r (X=i)= \dfrac{{f}_{i}}{200}
 \end{align}
-From table \ref{table},
+From table \ref{tab:givendistribution}
 \begin{align}
     P_r (X=6)= \dfrac{14}{200}\\
     =0.07
 \end{align}
 \section{Output}
-
-The output of Python program is attached below
+The outputs of Python program are attached below:
 \input{sheet_random}
-
+\input{sheet_random_2}
 \end{document}
