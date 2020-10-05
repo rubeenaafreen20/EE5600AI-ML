@@ -264,31 +264,27 @@ https://github.com/rubeenaafreen20/EE5600AI-ML/tree/master/Assignment4
 \section{Problem}
 Find the maximum and minimum values, if any, of the follwing function
 \begin{align}
-    f(x)=(2x-1)^2+3 \label{eq:1}
+    f(x)=9x^2+12x+2 \label{eq:1}
 \end{align}
 	
 \section{Solution}
-The given equation \eqref{eq:1} can be written as
-\begin{align}
-    f(x)=4x^2-4x+4
-\end{align}
 At the point where maxima / minima occurs, slope is zero. Therefore, we differentiate f(x) w.r.t x
 \begin{align}
     \frac{df(x)}{dx}=0\\
-    \implies 4(2x)-4(1)+0=0\\
-    \implies 8x-4=0\\
-    \implies x=0.5
+    \implies 9(2x)+12(1)+2=0\\
+    \implies 18x+12=0\\
+    \implies x=-\frac{2}{3}
 \end{align}
-Now, to know that x=0.5 is maxima or minima, we calculate $f''(x)$
+Now, to know whether $x=-\frac{2}{3}$ is maxima or minima, we calculate $f''(x)$
 \begin{align}
-    \frac{d''f(x)}{dx}=8\\
+    \frac{d''f(x)}{dx}=18
 \end{align}
-$\because   \frac{d''f(x)}{dx}>0$, therefore,  we can conclude that x=0.5 is a minima.\\
-Value of $f(x)$ at x=0.5 is
+$\because\frac{d''f(x)}{dx}>0$, therefore,  we can conclude that $x=-\frac{2}{3}$ is a minima.\\
+Value of $f(x)$ at $x=-\frac{2}{3}$ is
 \begin{align}
-    f(0.5)=4(0.5)^2-4(0.5)+4\\
-        =4(0.25)-2+4
-        =3
+    f(-\frac{2}{3})=9(-\frac{2}{3})^2+12(-\frac{2}{3})+2\\
+        =4-8+2
+        =-2
 \end{align}
 Figure \ref{Fig:1} shows plot of parabola obtained from python code:
 \begin{figure}[h]
