@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Oct  5 19:51:07 2020
-4x^2+4x+4
+9x^2+12x+2
 @author: Rubeena
 """
 
@@ -17,9 +17,9 @@ def f(x,a,b,d):
 	return a*(x**2)+b*x+d
 
 #Parabola parameters
-a = 4
-b = -4
-d = 4
+a = 9
+b = 12
+d = 2
 
 #Gradient Descent
 cur_x = 1 # The algorithm starts at x=1
@@ -40,8 +40,8 @@ print(f(cur_x,a,b,d))
 print("The local minimum occurs at", cur_x)
 
 # equation - 4x^2-4x+4
-x=np.linspace(0,1,40)
-y=4*(x**2)-4*x+4
+x=np.linspace(-4/3,0,40)
+y=f(x,a,b,d)
 plt.plot(x,y);
 plt.plot(cur_x,f(cur_x,a,b,d),'o')
 plt.text(cur_x*(1+0.1), f(cur_x,a,b,d),'P')
