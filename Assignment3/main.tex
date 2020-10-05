@@ -238,6 +238,10 @@ columns=fullflexible
 % For peerreview papers, this IEEEtran command inserts a page break and
 % creates the second title. It will be ignored for other modes.
 %\IEEEpeerreviewmaketitle
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt,color=blue ] {#1};
+   \end{tikzpicture}}
 \vspace{2ex}
 \begin{center}
 {\underline{\Large \bf Optimization}}
@@ -260,13 +264,48 @@ https://github.com/rubeenaafreen20/EE5600AI-ML/tree/master/Assignment3
 \section{Problem}
 Solve:
 \begin{align}
-    \max_{\{x\}} Z=\myvec{4 & 1}\vec{x}\\
-    s.t\quad \myvec{1 & 1\\3 & 1} \leq \myvec{50\\90}\\
-    \Vec{x}\geq 0
+    \max_{\{x\}} Z=\myvec{4 & 1}\vec{x}\label{eq:1}\\
+    s.t\quad \myvec{1 & 1\\3 & 1} \leq \myvec{50\\90}\label{eq:2}\\
+    \Vec{x}\geq 0 \label{eq:3}
 \end{align}
 	
 \section{Solution}
-The given problem can be expressed as:
+Adding slack variables to the left side of \eqref{eq:2} and \eqref{eq:3},we get
+\begin{align}
+    Z-4x-y=0\\
+    x+y+s_1=50\\
+    3x+y+s_2=90
+\end{align}
+Forming simplex tableau,
+\begin{align}
+    \myvec{x & y & s_1 & s_2 & b \\\hline
+    1 & 1 & 1 & 0 & 50 \\
+    \mycirc{3} & 1 & 0 & 1 & 90 \\\hline
+    -4 & -1 & 0 & 0 & 0}
+\end{align}
+-4 is the smallest entry in the bottom row. Therefore, we determine that x is the starting variable.\\
+Also, the smallest positive ratio is 30, therefore, we chose $s_2$ as the departing variable.\\
+Hence, keeping the pivot element as 3, we perform  Gauss Jordan elimination,
+\begin{align}
+    \myvec{x & y &s_1 & s_2 & b\\
+    1 & 1 & 1 & 0 & 50\\
+    1 & \frac{1}{3} & 0 & \frac{1}{3} & 30\\\hline
+    -4 & -1 & 0 & 0 & 0}\\
+    \myvec{x & y &s_1 & s_2 & b\\
+    0 & \frac{2}{3} & 1 & \frac{-1}{3} & 20\\
+    1 & \frac{1}{3} & 0 & \frac{1}{3} & 30\\\hline
+    0 & \frac{1}{3} & 0 & \frac{4}{3} & 120}
+\end{align}
+Note that x has replaced in the basis column $s_2$ and the improved solution
+\begin{align}
+    (x,y,s_1,s_2)=(30,0,20,0)
+\end{align}
+maximizes Z to value
+\begin{align}
+    Z=4(30)+3(0)\\
+    Z=120
+\end{align}
+The given problem can be expressed in the form of matrix inequality as:
 \begin{align}
     \max_{\{x\}}\vec{c}^T\Vec{x}\\
     s.t \quad \Vec{A}\vec{x}=\vec{b}\\
@@ -278,6 +317,8 @@ where
     \Vec{A}=\myvec{1 & 1\\3 & 1}\\
     \Vec{b}=\myvec{50\\90}
 \end{align}
+can be solved using Python. The plot obtained from python is attached below:
+\newpage
 \begin{figure}[h]
 \renewcommand{\theenumi}{1}
 \centering
@@ -285,37 +326,4 @@ where
 \caption{Plot obtained from python code}
 \label{Fig:1}
 \end{figure}
-In \figref{Fig:1}, we observe that the feasible solution lies in the region OCPD. So, we now use Corner Point Method to determine the maximum value of Z.
-\begin{center}
-\renewcommand{\theenumi}{1}
-\begin{tabular}{|c|c|c|}
-    \hline
-    \multicolumn{1}{|c|}{\textbf{Corner Point}} & \multicolumn{1}{c|}{$Z=\Vec{c}^T\vec{x}$} &
-    \multicolumn{1}{c|}{\textbf{Value of Z}}\\
-    \hline
-    \myvec{0\\0} & \myvec{4 & 1}\myvec{0\\0}   &   0\\
-    \hline
-    \myvec{30\\0} & \myvec{4 & 1}\myvec{30\\0} &  120\\
-    \hline
-    \myvec{20\\30} & \myvec{4 & 1}\myvec{20\\30} & 110\\
-    \hline
-    \myvec{0\\50} & \myvec{4 & 1}\myvec{0\\50}    &   50\\
-    \hline
-    \end{tabular}
-    \captionof{table}{Computing values of Z at different points of the polygon}
-    \label{tab:Table1}
-\end{center}
-Table \ref{tab:Table1} gives value of Z at the points O,C,P and D. From table \ref{tab:Table1}, it is clear that the maximum value of Z is 120 at point C=\myvec{30\\0}
-\section{Output}
-Output obtained from python code on the console is attached below:
-\newpage
-\begin{figure}[h]
-\renewcommand{\theenumi}{2}
-\centering
-\includegraphics[width=\columnwidth]{output.JPG}
-\caption{Output of python code}
-\label{fig:1}
-\end{figure}
-
-
 \end{document}
