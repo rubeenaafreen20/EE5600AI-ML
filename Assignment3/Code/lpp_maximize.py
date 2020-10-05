@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 from coeffs import *
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (AutoMinorLocator, MultipleLocator)
 
 A = np.array(([1.0,1.0],[3.0,1.0]))
 b = np.array([ 50.0, 90.0 ]).reshape((2,1))
@@ -35,9 +36,7 @@ model +=  obj_func
 
 #Constraints
 for i in range(0,2):
-    model+=lpSum((A[i][j]*x1) for j in range(0,1)) <= b[i]
-    model+=x1[i]>=0
-
+    model+=lpSum((A[i][j]*x1[j]) for j in range(0,2)) <= b[i]  
 print("\n",model) 
 
 model.writeLP("Maximization-Problem.lp")
@@ -73,12 +72,26 @@ x1=np.linspace(-20,60,100)
 y1=(c1*np.ones(100) - x1)
 x2=np.linspace(-20,60,100)
 y2=(c2*np.ones(100) - 3*x1)
+P=line_intersect(n1,c1,n2,c2)
+O=line_intersect(n1, 0, n2, 0)
 
 #Plotting Lines
 plt.plot(x1,y1,label='$1$')
 plt.plot(x2,y2,label='$2$')
 plt.axhline(y=0,color='r',label='$3$')
 plt.axvline(x=0,color='g',label='$4$')
+plt.plot(P[0],P[1],'o')
+plt.text(P[0]*(1+0.1), P[1], 'P')
+plt.plot(A[0],A[1],'o')
+plt.text(A[0]*(1+0.1), A[1]*(1+0.03), 'A')
+plt.plot(B[0],B[1],'o')
+plt.text(B[0]*(1+0.1), B[1], 'B')
+plt.plot(C[0],C[1],'o')
+plt.text(C[0]*(1+0.1), C[1]*(1+0.1), 'C')
+plt.plot(D[0],D[1],'o')
+plt.text(D[0], D[1], 'D')
+plt.plot(O[0],O[1],'o')
+plt.text(O[0], O[1], 'O')
 plt.xlim(-50,100)
 plt.ylim(-10, 100)
 plt.legend(loc='best')
