@@ -17,6 +17,7 @@
 %\usepackage{wasysym}
 \usepackage{amsthm}
 %\usepackage{iithtlc}
+\usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{txfonts}
 \usepackage{stfloats}
@@ -268,24 +269,34 @@ Find the maximum and minimum values, if any, of the follwing function
 \end{align}
 	
 \section{Solution}
-At the point where maxima / minima occurs, slope is zero. Therefore, we differentiate f(x) w.r.t x
+From figure \ref{Fig:1}, the line segment between any two points A and B on the graph of the real-valued function lies above the graph between the two points.\newline
+Therefore, the function is convex.\newline
+For a general quadratic equation,
 \begin{align}
-    \frac{df(x)}{dx}=0\\
-    \implies 9(2x)+12(1)+2=0\\
-    \implies 18x+12=0\\
-    \implies x=-\frac{2}{3}
+    f(x)=ax^2+bx+c
 \end{align}
-Now, to know whether $x=-\frac{2}{3}$ is maxima or minima, we calculate $f''(x)$
+The update equation for gradient descent to find minimum of a function is given by:
 \begin{align}
-    \frac{d''f(x)}{dx}=18
+    \lambda_{n+1}=\lambda_n-\mu f'(\lambda_n) \label{eq:2}\\
+    =\lambda_n-\mu (2a\lambda_n +b)
 \end{align}
-$\because\frac{d''f(x)}{dx}>0$, therefore,  we can conclude that $x=-\frac{2}{3}$ is a minima.\\
-Value of $f(x)$ at $x=-\frac{2}{3}$ is
+In equation \eqref{eq:2} $\lambda_0$ is an initial guess and $\mu$ is a variable parameter,known as step size $\lambda_{n+1}$ is the next position. The minus sign refers to the minimization part of gradient descent.
+\newline Assume,
 \begin{align}
-    f(-\frac{2}{3})=9(-\frac{2}{3})^2+12(-\frac{2}{3})+2\\
-        =4-8+2
-        =-2
+    \lambda_0=1\\
+    \mu=0.001 \\
+    precision = 0.00000001\\
+    \implies \lambda_1=1-0.001(2\times9\times1+12)\\
+    \implies \lambda_1=1-0.03\\
+    =0.97
 \end{align}
+following the above method, we keep doing iterations until $\lambda_{n+1}-\lambda_{n}$ becomes less than the value of precision we have chosen.
+\section{Results}
+Using python, the results are:
+\begin{enumerate}
+	\item The local minimum occurs at -0.666666130125316.
+	\item The value of f(x) at minima is -1.9999999999974087
+\end{enumerate}
 Figure \ref{Fig:1} shows plot of parabola obtained from python code:
 \begin{figure}[h]
 \renewcommand{\theenumi}{1}
