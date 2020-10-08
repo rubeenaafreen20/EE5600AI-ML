@@ -39,12 +39,22 @@ while (previous_step_size > precision) & (iters < max_iters):
 print(f(cur_x,a,b,d))
 print("The local minimum occurs at", cur_x)
 
-# equation - 4x^2-4x+4
+
+
+# equation - 9x^2+12x+2x+4
+A=np.array([-1,-1])
+B=np.array([-0.2,0])
+x_AB=line_gen(A,B)
 x=np.linspace(-4/3,0,40)
 y=f(x,a,b,d)
 plt.plot(x,y);
 plt.plot(cur_x,f(cur_x,a,b,d),'o')
 plt.text(cur_x*(1+0.1), f(cur_x,a,b,d),'P')
+plt.plot(A[0],A[1],'ro')
+plt.plot(B[0],B[1],'ro')
+plt.text(A[0]*(1+0.05),A[1],'A')
+plt.text(B[0]*(1-0.15),B[1]*(1+0.1),'B')
+plt.plot(x_AB[0,:], x_AB[1,:],label="AB")
 plt.title("Parabola curve")
 plt.xlabel("x axis")
 plt.ylabel("y axis")
