@@ -269,9 +269,20 @@ Find the maximum and minimum values, if any, of the follwing function
 \end{align}
 	
 \section{Solution}
-From figure \ref{Fig:1}, the line segment between any two points A and B on the graph of the real-valued function lies above the graph between the two points.\newline
-Therefore, the function is convex.\newline
-For a general quadratic equation,
+ A function is said to be convex if following inequality is true:
+\begin{align}
+    \lambda f(x_1)+(1-\lambda) f(x_2) \geq f(\lambda x_1+(1-\lambda) x_2)
+\end{align}
+and for $\lambda \in [0,1]$
+\begin{align}
+&\lambda(9x_1^2+12x_1+2)+(1-\lambda)((9x_2^2+12x_2+2) \geq \nonumber \\ 
+&9(\lambda x_1 +(1-\lambda )x_2)^2+12(\lambda x_1 +(1-\lambda )x_2)+2\\
+&x_1^2(9\lambda-9\lambda^2)+x_2^2(9\lambda-9\lambda^2)-2x_1x_2(9\lambda-9\lambda^2) \geq 0\\
+&(9\lambda-9\lambda^2)(x_1^2+x_2^2-2x_1x_2)\\
+&9\lambda(1-\lambda)(x_1-x_2)^2 \geq 0 \label{eq:2}
+\end{align}
+Equation \eqref{eq:2} holds true for all $\lambda\in(0,1)$. Hence the given function f(x) is convex.
+\newline Fora general quadratic equation
 \begin{align}
     f(x)=ax^2+bx+c
 \end{align}
@@ -297,7 +308,7 @@ Using python, the results are:
 	\item The local minimum occurs at -0.666666130125316.
 	\item The value of f(x) at minima is -1.9999999999974087
 \end{enumerate}
-Figure \ref{Fig:1} shows plot of parabola obtained from python code:
+Figure \ref{Fig:1} shows plot of parabola obtained from python code:\newpage
 \begin{figure}[h]
 \renewcommand{\theenumi}{1}
 \centering
